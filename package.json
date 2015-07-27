@@ -1,0 +1,46 @@
+{
+  "name": "realtime-react-client",
+  "version": "1.0.0",
+  "description": "React single page app for real-time data",
+  "main": "dist/server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf dist",
+    "watch-js": "./node_modules/.bin/babel src -d dist --experimental -w",
+    "dev-server": "node dist/server/webpack",
+    "server": "nodemon dist/server/server",
+    "start": "npm run watch-js & npm run dev-server & npm run server",
+    "build": "npm run clean && ./node_modules/.bin/babel src -d dist --experimental"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hara-io/realtime-react-client.git"
+  },
+  "keywords": [
+    "react",
+    "isomorphic",
+    "realtime",
+    "client"
+  ],
+  "author": "HARA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hara-io/realtime-react-clientissues"
+  },
+  "homepage": "https://github.com/hara-io/realtime-react-client",
+  "dependencies": {
+    "express": "^4.13.1",
+    "jade": "^1.11.0",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3"
+  },
+  "devDependencies": {
+    "babel": "^5.8.9",
+    "babel-core": "^5.8.9",
+    "babel-loader": "^5.3.2",
+    "node-libs-browser": "^0.5.2",
+    "react-hot-loader": "^1.2.8",
+    "webpack": "^1.10.5",
+    "webpack-dev-server": "^1.10.1"
+  }
+}
