@@ -1,15 +1,34 @@
-// Webpack dev server
-// Ran in parallel with the Express server
+var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
+var webpackConfig = require('./../../webpack.config.js');
+var path = require('path');
+var mainPath = path.resolve(__dirname, '..', 'src/client', 'app.js');
 
-import WebpackDevServer from "webpack-dev-server";
-import webpack from "webpack";
-import config from "../../webpack.config.dev";
+module.exports = function () {
 
-var server = new WebpackDevServer(webpack(config), {
-  // webpack-dev-server options
-  publicPath: config.output.publicPath,
-  hot: true,
-  stats: { colors: true },
-});
+  var bundleStart = null;
+  var compiler = webpack(webpackConfig);
+  compiler.plugin('compile', function() {
+    console.log('Bundling...');
+    bundleStart = Date.now();
+  });
+  compiler.plugin('done', function() {
+    console.log('Bundled in ' + (Date.now() - bundleStart) + 'ms!');
+  });
 
-server.listen(8080, "localhost", function() {});
+  var bundler = new WebpackDevServer(compiler, {
+    publicPath: '/build/',
+    inline: true,
+    hot: true,
+    quiet: false,
+    noInfo: true,
+    stats: {
+      colors: true
+    }
+  });
+
+  bundler.listen(3001, 'localhost', function () {
+    console.log('Bundling project, please wait...');
+  });
+
+};
