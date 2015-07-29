@@ -5,7 +5,7 @@
   "main": "src/server/server.js",
   "scripts": {
     "clean": "rm -rf build",
-    "build-dev": "npm run clean && webpack --watch --progress --colors",
+    "build-dev": "npm run clean && webpack --progress --colors",
     "build-prod": "npm run clean && webpack -p --config webpack.production.config.js",
     "start": "webpack-dev-server --hot --inline --progress --colors"
   },
@@ -26,8 +26,10 @@
   },
   "homepage": "https://github.com/hara-io/realtime-react-client",
   "dependencies": {
+    "material-ui": "^0.10.1",
     "react": "^0.13.3",
-    "react-router": "^0.13.3"
+    "react-router": "^0.13.3",
+    "react-tap-event-plugin": "^0.1.7"
   },
   "devDependencies": {
     "babel": "^5.8.12",
@@ -36,6 +38,7 @@
     "css-loader": "^0.15.6",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
+    "html-webpack-plugin": "^1.6.0",
     "node-sass": "^3.2.0",
     "react-hot-loader": "^1.2.8",
     "sass-loader": "^1.0.3",
