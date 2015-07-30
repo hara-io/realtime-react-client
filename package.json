@@ -5,9 +5,9 @@
   "main": "src/server/server.js",
   "scripts": {
     "clean": "rm -rf build",
-    "build-dev": "npm run clean && webpack --progress --colors",
+    "build-dev": "webpack --progress --colors",
     "build-prod": "npm run clean && webpack -p --config webpack.production.config.js",
-    "start": "webpack-dev-server --hot --inline --progress --colors"
+    "start": "webpack --progress --colors && webpack-dev-server --hot --inline --progress --colors"
   },
   "repository": {
     "type": "git",

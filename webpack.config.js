@@ -7,16 +7,15 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var nodeModulesPath = path.resolve(__dirname, 'node_modules');
 var appPath = path.resolve(__dirname, 'src', 'client', 'app.js');
 var buildPath = path.resolve(__dirname, 'build');
-var stylesPath = path.resolve(__dirname, 'build', 'assets', 'css', 'styles.css');
-var indexPath = path.resolve(__dirname, '.', 'index.html');
+var indexPath = path.resolve(__dirname, 'index.html');
 
 var plugins = [
   new webpack.optimize.OccurenceOrderPlugin(),
-  new ExtractTextPlugin(stylesPath, {
+  new ExtractTextPlugin('assets/css/styles.css', {
     allChunks: true
   }),
   new HtmlWebpackPlugin({
-    template: indexPath,
+    template: indexPath
   }),
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoErrorsPlugin()
@@ -33,17 +32,18 @@ var config = {
   output: {
     path: buildPath,
     filename: 'bundle.js',
-    publicPath: '/js/'
+    publicPath: ''
   },
   plugins: plugins,
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', 'scss']
   },
   module: {
     loaders: [
       { test: /\.jsx?$/, loaders: ['react-hot', 'babel-loader'], exclude: [nodeModulesPath] },
-      { test: /\.scss$/, loader: ExtractTextPlugin.extract('css!sass') }
-    ]
+      { test: /\.scss$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader') }
+    ],
+    noParse: /\.min\.js/
   }
 };
 
