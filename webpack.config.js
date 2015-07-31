@@ -11,7 +11,7 @@ var indexPath = path.resolve(__dirname, 'index.html');
 
 var plugins = [
   new webpack.optimize.OccurenceOrderPlugin(),
-  new ExtractTextPlugin('assets/css/styles.css', {
+  new ExtractTextPlugin('layout.css', {
     allChunks: true
   }),
   new HtmlWebpackPlugin({
@@ -40,8 +40,19 @@ var config = {
   },
   module: {
     loaders: [
-      { test: /\.jsx?$/, loaders: ['react-hot', 'babel-loader'], exclude: [nodeModulesPath] },
-      { test: /\.scss$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader') }
+      {
+        test: /\.jsx?$/,
+        loaders: ['react-hot', 'babel-loader'],
+        exclude: [nodeModulesPath]
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
+      },
+      {
+        test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.woff2$|\.eot$|\.ttf$|\.wav$|\.mp3$/,
+        loader: 'file'
+      }
     ],
     noParse: /\.min\.js/
   }
