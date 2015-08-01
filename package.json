@@ -7,7 +7,7 @@
     "clean": "rm -rf build",
     "build-dev": "webpack --progress --colors",
     "build-prod": "npm run clean && webpack -p --config webpack.production.config.js",
-    "start": "webpack --progress --colors && webpack-dev-server --hot --inline --progress --colors"
+    "start": "webpack-dev-server --hot --inline --progress --colors"
   },
   "repository": {
     "type": "git",
@@ -30,7 +30,8 @@
     "material-ui": "^0.10.1",
     "react": "^0.13.3",
     "react-router": "^0.13.3",
-    "react-tap-event-plugin": "^0.1.7"
+    "react-tap-event-plugin": "^0.1.7",
+    "superagent": "^1.2.0"
   },
   "devDependencies": {
     "babel": "^5.8.12",

@@ -1,4 +1,5 @@
 import React from 'react';
+import DeviceList from './DeviceList';
 import Device from './Device';
 
 class Content extends React.Component {
@@ -6,6 +7,9 @@ class Content extends React.Component {
   render() {
   	return (
       <div>
+        Devices list:
+        <DeviceList />
+        <br/>
         <Device />
       </div>
   	);
@@ -13,4 +17,4 @@ class Content extends React.Component {
 
 }
 
-export default Device;
+export default Content;
