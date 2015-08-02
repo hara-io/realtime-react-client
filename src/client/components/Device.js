@@ -8,7 +8,8 @@ class Device extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      device: null
+      device: null,
+      showDevice: false
     };
     this._onChange = this._onChange.bind(this);
   }
@@ -22,21 +23,36 @@ class Device extends React.Component {
   }
 
   _onChange() {
+    let dev = DeviceStore.getDevice();
     this.setState({
-      device: DeviceStore.getDevice()
+      device: dev,
+      showDevice: (dev == null) ? false : true
     });
   }
 
   render() {
-  	return (
-      <div>
+
+    let html = (<div>No device selected</div>);
+    if (this.state.showDevice) {
+      html = (<div>
         <p>Tessel config:</p>
-        { this.state.device }
+        <ul>
+          <li>ID: {this.state.device.id}</li>
+          <li>MODEL: {this.state.device.model}</li>
+          <li>NAME: {this.state.device.name}</li>
+          <li>LIGHT: {this.state.device.ConfigAmbientLight.threshold}</li>
+          <li>SOUND: {this.state.device.ConfigAmbientSound.threshold}</li>
+        </ul>
+        <br/>
         <div>
-          <Module guid={ this.state.device && this.state.device.id } type="L" />
-          <Module guid={ this.state.device && this.state.device.id } type="S" />
+          <Module guid={ this.state.device.id } type="L" />
+          <Module guid={ this.state.device.id } type="S" />
         </div>
-      </div>
+      </div>);
+    }
+
+  	return (
+      html
   	);
   }
 
