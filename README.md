@@ -6,6 +6,5 @@ In the project's directory, run the following commands:
 
 ```
 $ npm install
-$ npm run build
 $ npm start
 ```
