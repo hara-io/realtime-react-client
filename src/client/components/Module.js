@@ -47,6 +47,7 @@ class Module extends React.Component {
 
   	return (
       <div>
+        <button className="mui-btn mui-btn-default">Button</button>
         <RaisedButton label="Update" secondary={true} onClick={ this._handleUpdateClick } />
         <p>Data: { value }</p>
       </div>

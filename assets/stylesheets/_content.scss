@@ -1,0 +1,29 @@
+#pageContent {
+  position: relative;
+  width: 100%;
+  color: #555555;
+  background-color: #FFFFFF;
+  font-size: 18px;
+  text-align: center;
+
+  #deviceList {
+    position: relative;
+    margin: 20px;
+
+  }
+
+  #deviceConfig {
+    position: relative;
+    margin: 20px;
+
+    div.device-not-found {
+      margin-top: 80px;
+      font-size: 42px;
+      color: #BFBFBF;
+
+      span.not-found-title {
+        display: block;
+      }
+    }
+  }
+}

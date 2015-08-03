@@ -6,11 +6,13 @@ class Content extends React.Component {
 
   render() {
   	return (
-      <div>
-        Devices list:
-        <DeviceList />
-        <br/>
-        <Device />
+      <div id="pageContent">
+        <div id="deviceList">
+          <DeviceList />
+        </div>
+        <div id="deviceConfig">          
+          <Device />
+        </div>
       </div>
   	);
   }

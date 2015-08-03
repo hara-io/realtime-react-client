@@ -32,7 +32,10 @@ class Device extends React.Component {
 
   render() {
 
-    let html = (<div>No device selected</div>);
+    let html = (<div className="device-not-found">
+      <span className="not-found-title">No device selected</span>
+    </div>);
+
     if (this.state.showDevice) {
       html = (<div>
         <p>Tessel config:</p>
