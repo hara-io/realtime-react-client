@@ -6,6 +6,7 @@ export default {
 
   fetch: (deviceId, type) => {
     request.get('http://localhost:3000/tessel/ambient/last/' + deviceId + '/' + type)
+      .auth('tessel', 'tessel123')
       .end(function(err, res) {
         AppDispatcher.handleAction({
             type: ModuleConstants.DATA_OK,

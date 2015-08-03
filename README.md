@@ -8,3 +8,5 @@ In the project's directory, run the following commands:
 $ npm install
 $ npm start
 ```
+
+Application starts at `http://localhost:8080`

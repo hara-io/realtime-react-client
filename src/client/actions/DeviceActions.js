@@ -6,6 +6,7 @@ export default {
 
   fetchAll: () => {
     request.get('http://localhost:3000/tessel/device/list')
+      .auth('tessel', 'tessel123')
       .end(function(err, res) {
         AppDispatcher.handleAction({
             type: DeviceConstants.FETCH_ALL_OK,
@@ -18,7 +19,8 @@ export default {
 
   fetch: (deviceId) => {
     if (deviceId) {
-      request.get('http://localhost:3000/tessel/device/list/' + deviceId)        
+      request.get('http://localhost:3000/tessel/device/list/' + deviceId)
+        .auth('tessel', 'tessel123')
         .end(function(err, res) {
           AppDispatcher.handleAction({
               type: DeviceConstants.FETCH_CONFIG_OK,
