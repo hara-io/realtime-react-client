@@ -1,5 +1,6 @@
 import React from 'react';
 import Module from './Module';
+import constants from '../../configs/constants';
 import DeviceActions from '../actions/DeviceActions';
 import DeviceStore from '../stores/DeviceStore';
 
@@ -38,18 +39,9 @@ class Device extends React.Component {
 
     if (this.state.showDevice) {
       html = (<div>
-        <p>Tessel config:</p>
-        <ul>
-          <li>ID: {this.state.device.id}</li>
-          <li>MODEL: {this.state.device.model}</li>
-          <li>NAME: {this.state.device.name}</li>
-          <li>LIGHT: {this.state.device.ConfigAmbientLight.threshold}</li>
-          <li>SOUND: {this.state.device.ConfigAmbientSound.threshold}</li>
-        </ul>
-        <br/>
-        <div>
-          <Module guid={ this.state.device.id } type="L" />
-          <Module guid={ this.state.device.id } type="S" />
+        <div className="modules-container">
+          <Module device={ this.state.device } type={ constants.module.light.code } />
+          <Module device={ this.state.device } type={ constants.module.sound.code } />
         </div>
       </div>);
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import Module from './Module';
 import DeviceActions from '../actions/DeviceActions';
 import DeviceStore from '../stores/DeviceStore';
+import { DropDownMenu } from 'material-ui';
 
 class DeviceList extends React.Component {
 
@@ -40,20 +41,21 @@ class DeviceList extends React.Component {
 
   render() {
     let options = []
-    options.push(<option value="">Select device</option>);
+    options.push({
+      payload: '',
+      text: 'Select a device'
+    });
 
     for (let i = 0; i < this.state.devices.length; i++) {
-      options.push(<option
-        value={ this.state.devices[i].id }>
-          { this.state.devices[i].name } ({ this.state.devices[i].model })
-        </option>);
+      options.push({
+        payload: this.state.devices[i].id,
+        text: this.state.devices[i].name + ' (' + this.state.devices[i].model + ')'
+      });
     }
 
   	return (
-      <div>
-        <select onChange={ this._handleComboChanged } id="deviceList" value={ this.state.selected }>
-          { options }
-        </select>
+      <div id="deviceDropdown">
+        <DropDownMenu autoWidth={ true } menuItems={ options } onChange={ this._handleComboChanged } />
       </div>
   	);
   }
