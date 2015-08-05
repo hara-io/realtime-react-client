@@ -11,6 +11,6 @@ constants['module'] = {
     description: 'Sound',
     icon: 'fa-volume-up'
   }
-}
+};
 
 export default constants;

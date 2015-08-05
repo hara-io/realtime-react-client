@@ -4,6 +4,7 @@ import { EventEmitter } from 'events';
 
 const CHANGE_EVENT = 'change';
 
+let error = null;
 let device = null;
 let list = {};
 
@@ -15,6 +16,10 @@ class DeviceStore extends EventEmitter {
 
   getList() {
     return list;
+  }
+
+  getError() {
+    return error;
   }
 
   emitChange() {
@@ -43,16 +48,31 @@ AppDispatcher.register((payload) => {
 
     case DeviceConstants.FETCH_CONFIG_OK:
       device = action.data.device;
+      error = action.data.error;
+      _deviceStore.emitChange();
+      break;
+
+    case DeviceConstants.FETCH_CONFIG_KO:
+      device = action.data.device;
+      error = action.data.error;
       _deviceStore.emitChange();
       break;
 
     case DeviceConstants.FETCH_CONFIG_NOT_FOUND:
       device = action.data.device;
+      error = action.data.error;
       _deviceStore.emitChange();
       break;
 
     case DeviceConstants.FETCH_ALL_OK:
       list = action.data.devices;
+      error = action.data.error;
+      _deviceStore.emitChange();
+      break;
+
+    case DeviceConstants.FETCH_ALL_KO:
+      list = action.data.devices;
+      error = action.data.error;
       _deviceStore.emitChange();
       break;
 

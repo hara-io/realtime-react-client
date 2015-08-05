@@ -5,6 +5,7 @@ import { EventEmitter } from 'events';
 
 const CHANGE_EVENT = 'change';
 
+let error = null;
 let lightData = null;
 let soundData = null;
 
@@ -16,6 +17,10 @@ class ModuleStore extends EventEmitter {
 
   getSound() {
     return soundData;
+  }
+
+  getError() {
+    return error;
   }
 
   emitChange() {
@@ -42,17 +47,21 @@ AppDispatcher.register((payload) => {
 
   switch(action.type) {
 
-    case ModuleConstants.DATA_OK:
-      if (action.data.value && action.data.value.type == constants.module.sound.code) {
-        soundData = action.data.value;
-      }
-      else if (action.data.value && action.data.value.type == constants.module.light.code) {
-        lightData = action.data.value;
-      }
-      else {
-        soundData = null;
-        lightData = null;
-      }
+    case ModuleConstants.DATA_LIGHT_OK:
+      lightData = action.data.value;
+      error = action.data.error;
+      _moduleStore.emitChange();
+      break;
+
+    case ModuleConstants.DATA_SOUND_OK:
+      soundData = action.data.value;
+      error = action.data.error;
+      _moduleStore.emitChange();
+      break;
+
+    case ModuleConstants.DATA_SOUND_KO:
+      soundData = action.data.value;
+      error = action.data.error;
       _moduleStore.emitChange();
       break;
 

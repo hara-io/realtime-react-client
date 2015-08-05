@@ -4,13 +4,26 @@ import Device from './Device';
 
 class Content extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillMount() {
+
+  }
+
+  componentWillUnmount() {
+
+  }
+
+
   render() {
   	return (
       <div id="pageContent">
         <div id="deviceList">
           <DeviceList />
         </div>
-        <div id="deviceConfig">          
+        <div id="deviceConfig">
           <Device />
         </div>
       </div>
