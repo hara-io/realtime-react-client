@@ -1,4 +1,5 @@
 import request from 'superagent';
+import format from 'string-format-js';
 import config from '../../configs/params';
 import AppDispatcher from '../dispatcher/FluxDispatcher';
 import DeviceConstants from '../constants/DeviceConstants';
@@ -6,7 +7,7 @@ import DeviceConstants from '../constants/DeviceConstants';
 export default {
 
   fetchAll: () => {
-    request.get('http://localhost:3000/tessel/device/list')
+    request.get(config.api.device.getList)
       .auth(config.auth.name, config.auth.password)
       .end(function(err, res) {
         if (!err) {
@@ -32,7 +33,7 @@ export default {
 
   fetch: (deviceId) => {
     if (deviceId) {
-      request.get('http://localhost:3000/tessel/device/list/' + deviceId)
+      request.get(config.api.device.getDevice.format(deviceId))
         .auth(config.auth.name, config.auth.password)
         .end(function(err, res) {
           if (!err) {

@@ -31,6 +31,7 @@
     "react": "^0.13.3",
     "react-router": "^0.13.3",
     "react-tap-event-plugin": "^0.1.7",
+    "string-format-js": "^0.1.2",
     "superagent": "^1.2.0"
   },
   "devDependencies": {

@@ -1,4 +1,5 @@
 import request from 'superagent';
+import format from 'string-format-js';
 import config from '../../configs/params';
 import constants from '../../configs/constants';
 import AppDispatcher from '../dispatcher/FluxDispatcher';
@@ -7,7 +8,7 @@ import ModuleConstants from '../constants/ModuleConstants';
 export default {
 
   fetch: (deviceId, type) => {
-    request.get('http://localhost:3000/tessel/ambient/last/' + deviceId + '/' + type)
+    request.get(config.api.module.getLast.format(deviceId, type))
       .auth(config.auth.name, config.auth.password)
       .end(function(err, res) {
         if (type == constants.module.sound.code) {
