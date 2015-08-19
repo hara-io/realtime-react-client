@@ -29,7 +29,7 @@ class DeviceList extends React.Component {
     let id = event.target.value;
     this.setState({
       selected: id
-    })
+    });
     DeviceActions.fetch(id);
   }
 

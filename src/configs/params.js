@@ -6,7 +6,7 @@ params['auth'] = {
 };
 
 params['host'] = {
-  name: 'localhost',
+  name: '192.168.18.8',
   port: '3000'
 }
 

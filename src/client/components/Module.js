@@ -44,7 +44,7 @@ class Module extends React.Component {
   }
 
   render() {
-    let value = (this.state.data) ? this.state.data.value : '';
+    let value = (this.state.data) ? this.state.data.value : '--';
 
     let title = {};
     let threshold = null;

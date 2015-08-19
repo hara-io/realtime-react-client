@@ -61,7 +61,7 @@ export default {
           type: DeviceConstants.FETCH_CONFIG_NOT_FOUND,
           data: {
             device: null,
-            error: new Error('Module not found')
+            error: null
           }
       });
     }
